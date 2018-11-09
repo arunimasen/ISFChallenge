@@ -1,0 +1,88 @@
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+    clrscr();
+    /* No.of infant deaths of less than 7 days - a
+    No.of infant deaths of more than 7 days but less than 29 days - b
+    No.of infant deaths of more than 29 days but less than a year - c
+    No. of deaths of less than 6 years - d
+    No. of live births - l, no.of deaths - nd, mid-year population - myp, birth weight - bw */
+    unsigned long long int a[40], b[40], c[40], d[40], l[40], nd[40], myp[40], IMR[40], NMR[40], PNMR[40], bw[40], avgbw[40], sum[40], sumw[40];
+    char ch;
+    int i, j, n, m, desc, sum=0, sumw=0;
+    cout << "The list of states and union territories are as follows: \n";
+    << "1. Andhra Pradesh \n 2. Arunachal Pradesh \n 3. Assam \n 4. Bihar \n 5. Chhattisgarh \n 6. Goa \n" 
+    << "7. Gujarat \n 8. Haryana \n 9. Himachal Pradesh \n 10. Jammu and Kashmir \n 11. Jharkhand \n 12. Karnataka \n 13. Kerala \n 14. Madhya Pradesh \n 15. Maharashtra \n 16. Manipur \n 17. Meghalaya \n 18. Mizoram \n 19. New Delhi \n 20. Nagaland \n 21. Odisha \n 22. Punjab \n 23. Rajasthan \n 24. Sikkim \n 25. Tamil Nadu \n  26. Tripura \n 27. Telangana \n 28. Uttar Pradesh \n 29. Uttarakhand \n 30. West Bengal \n";
+    cout << "\n How many states do you want to enter data for? "
+    cin >> n;
+    for(i=0; i<30; i++)
+    {
+    cout << "Enter data of state no. " << i+1 << ""\n";
+    cout << " \n Enter no.of infant deaths of less than 7 days";
+    cin >> a[i];
+    cout << "\n Enter no.of infant deaths of more than 7 days but less than 29 days";
+    cin >> b[i];
+    NMR[i] = a[i]+b[i];
+    cout << "\n Enter no.of infant deaths of more than 29 days but less than a year";
+    cin >> c[i];
+    PNMR = c[i];
+    IMR[i] = NMR[i]+PNMR[i];
+    cout << "\n Infant Mortality Rate for state no. " <<i+1 << " is" << IMR[i]; 
+    cout << "\n Do you want to enter more? (Y/N): "
+    cin>>ch;
+    } 
+    for (i = 0; i < n; ++i)   //  'for' loop is used for sorting the numbers in descending order
+    {	
+        for (j = i + 1; j < n; ++j)
+        {
+            if (IMR[i] < IMR[j])
+            {
+                desc = IMR[i];
+                IMR[i] = IMR[j];
+               IMR[j] = desc;
+            }
+        }
+    }
+     cout<<"\n List of states in descending order of Infant Mortality Rate : \n";
+    for (i = 0; i < n; ++i)
+    {
+        cout<< i+1 <<"." << IMR[i] << "\n";
+    }
+    cout << "\n AVERAGE BIRTH WEIGHT";
+    for(i=0; i<n; i++)
+    {
+    cout << "\n How many birth weights do you want to enter for state no. " << i+1 << "?" ";
+    cin >> m;
+    for(j=0; j<m; j++)
+    {cout << "\n Enter birth weight no. " << j+1<< " :";
+    cin>> bw[j];
+    sum+=bw[j];
+    }
+    avgbw[i]= sum/m;
+    cout << "\n Average birth weight for state no. " << i+1 << " is" << avgbw;
+    }
+    
+    cout<<"\n List of states in descending order of Average Birth Weight : \n";
+    for (i = 0; i < n; ++i)
+    {
+        cout<< i+1 <<"." << avgbw[i] << "\n";
+    }
+    
+    cout << "\n WATER QUALITY INDEX \n";
+    cout << "\n How many chemical parameters (eg. pH, TDS, TH, HCO3, Cl, SO4, NO3, Fe) do you want to include?";
+    cin >> q;
+    for(i=0; i<q; i++)
+    {
+        cout << "\n How many observations do you want to include? ";
+        cin>> s;
+    for(j=0; j<s; j++)
+    cout << "\n Enter value of parameter: ";
+        cin >> w[j];
+        sumw+=w[j];
+    }
+    
+    }
+    getch();
+}
+    
